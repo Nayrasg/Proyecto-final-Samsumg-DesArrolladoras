@@ -1,0 +1,129 @@
+<div class="row">
+  <div class="col-lg-6">
+    <h2>{{ accion }} Socio</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-4">
+    <form [formGroup]="myForm" autocomplete="off">
+
+      <!----------------------------------------- NOMBRE ---------------------------------------------------->
+      <div class="col-lg-12">
+        <mat-form-field class="example-container">
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="nombre">
+        </mat-form-field>
+        <!--muestra el campo de ayuda mientras no cumpla los requisitos. El campo es oblitario y muestra el mensaje cuando e stocado-->
+        <div *ngIf="myForm.get('nombre')!.hasError('required') && myForm.get('nombre')!.touched" class="requerido">
+          <span >Campo requerido. Mínimo 3 caracteres</span>
+        </div>
+        <!-- muestra el campo ayuda mientras los caracteres sean menores que 3 -->
+        <div *ngIf="myForm.get('nombre')!.hasError('minlength') && myForm.get('nombre')!.touched" class="requerido">
+          <span>Mínimo 3 caracteres</span>
+        </div>
+        <br>
+      </div>
+
+      <!----------------------------------------- APELLIDOS ---------------------------------------------------->
+     <div class="col-lg-12">
+        <mat-form-field class="example-container">
+          <mat-label>Apellidos</mat-label>
+          <input matInput formControlName="apellidos">
+        </mat-form-field>
+
+        <!--muestra el campo de ayuda mientras no cumpla los requisitos. El campo es oblitario y muestra el mensaje cuando e stocado-->
+        <div *ngIf="myForm.get('apellidos')!.hasError('required') && myForm.get('apellidos')!.touched" class="requerido">
+          <span>Campo requerido. Mínimo 3 caracteres</span>
+        </div>
+        <!-- muestra el campo ayuda mientras los caracteres sean menores que 3 -->
+        <div *ngIf="myForm.get('apellidos')!.hasError('minlength') && myForm.get('apellidos')!.touched" class="requerido">
+          <span>Mínimo 3 caracteres</span>
+        </div>
+
+      </div>
+
+      <!----------------------------------------- NUMERO EMPLEADO -------------------------------------------------------->
+
+      <div class="col-lg-12">
+        <mat-form-field class="example-container" >
+          <mat-label>Número Socio</mat-label>
+          <input matInput formControlName="numSocio">
+        </mat-form-field>
+
+         <!--muestra el campo de ayuda mientras no cumpla los requisitos. El campo es oblitario y muestra el mensaje cuando e stocado-->
+        <div *ngIf="myForm.get('numSocio')!.hasError('required') && myForm.get('numSocio')!.touched" class="requerido">
+          <span>Campo requerido. Valor único. </span>
+        </div>
+         <!-- Solo de admiten numeros y muestra el mensaje cuando es stocado-->
+        <div *ngIf="myForm.get('numSocio')!.hasError('pattern') && myForm.get('numSocio')!.touched" class="requerido">
+          <span>Solo se admiten números</span>
+        </div>
+
+      </div>
+
+      <!----------------------------------------- DNI --------------------------------------------------------->
+
+      <div class="col-lg-12">
+        <mat-form-field class="example-container">
+          <mat-label>DNI</mat-label>
+          <input matInput formControlName="dni">
+        </mat-form-field>
+        <!--muestra el campo de ayuda mientras no cumpla los requisitos. El campo es oblitario y muestra el mensaje cuando e stocado-->
+        <div *ngIf="myForm.get('dni')!.hasError('required') && myForm.get('dni')!.touched" class="requerido">
+          <span>Campo requerido. Ocho numeros y una letra </span>
+        </div>
+        <!-- Solo de admiten 8 numeros, una letra y muestra el mensaje cuando e stocado-->
+        <div *ngIf="myForm.get('dni')!.hasError('pattern') && myForm.get('dni')!.touched" class="requerido">
+          <span>Ocho numeros y una letra</span>
+        </div>
+      </div>
+
+      <!-----------------------------------------   TELEFONO ---------------------------------------------------->
+
+      <div class="col-lg-12">
+        <mat-form-field class="example-container">
+          <mat-label>Telefono</mat-label>
+          <input matInput formControlName="telefono">
+        </mat-form-field>
+
+        <!--muestra el campo de ayuda mientras no cumpla los requisitos. El campo es oblitario y muestra el mensaje cuando e stocado-->
+        <div *ngIf="myForm.get('telefono')!.hasError('required') && myForm.get('telefono')!.touched" class="requerido">
+          <span>Campo requerido. Mínimo 9 caracteres</span>
+        </div>
+         <!-- Solo de admiten numeros y muestra el mensaje cuando e stocado-->
+         <div *ngIf="myForm.get('telefono')!.hasError('pattern') && myForm.get('telefono')!.touched" class="requerido">
+          <span>Solo se admiten números</span>
+        </div>
+
+
+      </div>
+
+      <!----------------------------------------- SEXO--- ---------------------------------------------------->
+
+      <div class="col-lg-12">
+
+        <mat-radio-group aria-label="Seleccione su genero" formControlName="sexo">
+          <mat-radio-button value="Femenino" style="margin-right: 10px">Femenino</mat-radio-button>
+          <mat-radio-button value="Masculino" style="margin-right: 10px">Masculino</mat-radio-button>
+          <mat-radio-button value="Otro" style="margin-right: 10px">Otro</mat-radio-button>
+          <mat-radio-button value="No especificado">No especificado</mat-radio-button>
+        </mat-radio-group>
+        <!--muestra el campo de ayuda mientras no cumpla los requisitos. El campo es oblitario y muestra el mensaje cuando e stocado-->
+        <div *ngIf="myForm.get('sexo')!.hasError('required') && myForm.get('sexo')!.touched" class="requerido">
+          <span>Campo requerido. </span>
+        </div>
+      </div>
+      <br>
+      <br>
+
+      <!----------------------------------------- BOTONES ---------------------------------------------------->
+
+      <div class="col-lg-12">
+        <!-- El boton aceptar se desablita cuando el formulario no es rellenado correctamente-->
+        <button mat-raised-button color="primary" [disabled]="myForm.invalid" style="margin-right: 10px" type="button" (click)="guardarSocio()">Aceptar</button>
+        <button mat-stroked-button color="primary" type="button" routerLink="/">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+/*Input*/
+.example-container{
+  width: 30%;
+  /*font-size: 16px;*/
+}
+.row{
+  text-align: center;
+}
+
+.requerido{
+  font-size: smaller;
+  margin-top: -20px;
+  color: red;
+}
